@@ -97,11 +97,13 @@ const Duas = ({search}) => {
           </div>
           <div className="flex static flex-col md:flex-row gap-y-6 justify-between gap-2 items-center mt-3">
             <div className="static top-0 left-0">
-              <AudioPlayer
-                src="https://server8.mp3quran.net/afs/112.mp3"
+              {
+                dua?.audio && <AudioPlayer
+                src={dua?.audio}
                 showDownloadProgress={false}
                 onPlay={(e) => console.log("onPlay")}
               />
+              }
             </div>
             <div className="flex gap-6 text-[#797373] items-center">
               <span onClick={() => handelCopy(dua)} className="cursor-pointer">

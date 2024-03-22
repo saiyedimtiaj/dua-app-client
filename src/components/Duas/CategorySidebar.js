@@ -4,15 +4,17 @@ import { MdMenu } from "react-icons/md";
 import { Suspense, useEffect, useState } from "react";
 import UseAxios from "@/Hooks/UseAxios";
 import Accrodian from "./Accrodian";
+import { useParams } from "next/navigation";
 
-const CategorySidebar = ({params}) => {
-  const search = params?.duasId
+const CategorySidebar = () => {
+  const params = useParams()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [inputText, setInputText] = useState("");
   const [sebCategory, setSubCategory] = useState("");
   const [duas, setDuas] = useState();
   const axios = UseAxios();
-
+  
+  const search = decodeURIComponent(params?.duasId)
   console.log(search);
 
   const toggleDrawer = () => {
@@ -99,32 +101,26 @@ const CategorySidebar = ({params}) => {
           ></label>
           <div className="menu w-72 min-h-screen bg-white mx-0 ">
             <div className="space-y-2 overflow-y-auto h-screen bg-white mx-0 ">
-            {filterData?.map((duas) => (
             <Accrodian
               uniqueTitle={uniqueTitle}
               search={search}
               uniqueSubCategories={uniqueSubCategories}
               setSubCategory={setSubCategory}
-              duas={duas}
-              key={duas?._id}
+              duas={filterData}
             />
-          ))}
             </div>
           </div>
         </div>
 
         {/* lg sidebar */}
         <div className="w-72 hidden lg:block px-2 space-y-2 overflow-y-auto h-[calc(100vh-225px)] bg-white mx-0 ">
-          {filterData?.map((duas) => (
             <Accrodian
               uniqueTitle={uniqueTitle}
               search={search}
               uniqueSubCategories={uniqueSubCategories}
               setSubCategory={setSubCategory}
-              duas={duas}
-              key={duas?._id}
+              duas={filterData}
             />
-          ))}
         </div>
 
         {/* lg sidebar */}
