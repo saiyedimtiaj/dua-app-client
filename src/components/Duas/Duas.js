@@ -65,7 +65,7 @@ const Duas = () => {
   }, [setBookMark,bookMark]);
 
   return (
-   <Suspense fallback={<div>Loading...</div>}>
+   <Suspense>
      <div className="w-full space-y-5 transition-all duration-300 ease-in-out mb-[70px] lg:mb-5">
       {duas?.map((dua, index) => (
         <section

@@ -59,7 +59,7 @@ const CategorySidebar = () => {
     .map((item) => item?.name);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense>
          <div className="w-72 hidden bg-white lg:block p-3 border-b">
         <div>
           <h1 className="text-center bg-[#1FA45B] py-3 text-lg font-medium text-white">
