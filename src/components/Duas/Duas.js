@@ -3,7 +3,7 @@
 import UseAxios from "@/Hooks/UseAxios";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { FaCopy, FaBookmark, FaRegLightbulb, FaShareAlt } from "react-icons/fa";
 import { MdOutlineReport } from "react-icons/md";
@@ -65,7 +65,8 @@ const Duas = () => {
   }, [setBookMark,bookMark]);
 
   return (
-    <div className="w-full space-y-5 transition-all duration-300 ease-in-out mb-[70px] lg:mb-5">
+   <Suspense fallback={<div>Loading...</div>}>
+     <div className="w-full space-y-5 transition-all duration-300 ease-in-out mb-[70px] lg:mb-5">
       {duas?.map((dua, index) => (
         <section
           id={dua?.name}
@@ -137,6 +138,7 @@ const Duas = () => {
         </section>
       ))}
     </div>
+   </Suspense>
   );
 };
 

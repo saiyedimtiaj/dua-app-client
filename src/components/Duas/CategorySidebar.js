@@ -1,7 +1,7 @@
 "use client";
 
 import { MdMenu } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import UseAxios from "@/Hooks/UseAxios";
 import { useSearchParams } from "next/navigation";
 import Accrodian from "./Accrodian";
@@ -59,8 +59,8 @@ const CategorySidebar = () => {
     .map((item) => item?.name);
 
   return (
-    <>
-      <div className="w-72 hidden bg-white lg:block p-3 border-b">
+    <Suspense fallback={<div>Loading...</div>}>
+         <div className="w-72 hidden bg-white lg:block p-3 border-b">
         <div>
           <h1 className="text-center bg-[#1FA45B] py-3 text-lg font-medium text-white">
             Categories
@@ -129,7 +129,7 @@ const CategorySidebar = () => {
 
         {/* lg sidebar */}
       </div>
-    </>
+    </Suspense>
   );
 };
 

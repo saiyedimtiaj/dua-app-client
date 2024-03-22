@@ -4,12 +4,11 @@ import { MdOutlineDashboard } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import Link from "next/link";
 import { FaHandHoldingHeart, FaPrayingHands } from "react-icons/fa";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const LeftSidebar = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     const updateSidebarState = () => {
