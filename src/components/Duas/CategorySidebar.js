@@ -3,17 +3,17 @@
 import { MdMenu } from "react-icons/md";
 import { Suspense, useEffect, useState } from "react";
 import UseAxios from "@/Hooks/UseAxios";
-import { useSearchParams } from "next/navigation";
 import Accrodian from "./Accrodian";
 
-const CategorySidebar = () => {
-  const serachParams = useSearchParams();
-  const search = serachParams.get("cat");
+const CategorySidebar = ({params}) => {
+  const search = params?.duasId
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [inputText, setInputText] = useState("");
   const [sebCategory, setSubCategory] = useState("");
   const [duas, setDuas] = useState();
   const axios = UseAxios();
+
+  console.log(search);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);

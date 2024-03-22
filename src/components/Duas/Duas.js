@@ -2,7 +2,6 @@
 
 import UseAxios from "@/Hooks/UseAxios";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { FaCopy, FaBookmark, FaRegLightbulb, FaShareAlt } from "react-icons/fa";
@@ -12,9 +11,7 @@ import "react-h5-audio-player/lib/styles.css";
 import "./style.css";
 import { Modal } from "./Modal";
 
-const Duas = () => {
-  const serachParams = useSearchParams();
-  const search = serachParams.get("cat");
+const Duas = ({search}) => {
   const axios = UseAxios();
   const [duas, setDuas] = useState([]);
   const [bookMark, setBookMark] = useState([]);

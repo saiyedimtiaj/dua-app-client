@@ -33,7 +33,7 @@ const page = async () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-20 md:pb-0">
         {categoryLogosArray?.map((data, index) => (
           <Link
-            href={`/duas?cat=${data?.category}`}
+            href={`/duas/${data?.category}`}
             key={index}
             className="flex bg-white px-3 py-3 rounded-md items-center gap-2"
           >
