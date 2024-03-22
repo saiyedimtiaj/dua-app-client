@@ -84,7 +84,7 @@ const CategorySidebar = () => {
           >
             <MdMenu size={22} />
           </label>
-          <span className="lg:hidden">Dua's importance</span>
+          <span className="lg:hidden">Duas importance</span>
         </div>
         <div
           className={`drawer-side lg:hidden h-screen mx-0 px-0 ${
