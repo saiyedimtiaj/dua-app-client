@@ -31,18 +31,22 @@ const page = async () => {
       </div>
       <h1 className="text-xl font-semibold my-2">Categories Of Dua :</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-20 md:pb-0">
-        {
-            categoryLogosArray?.map((data,index)=><Link href={`/duas?cat=${data?.category}`} key={index} className="flex bg-white px-3 py-3 rounded-md items-center gap-2">
-                <Image
-                className="rounded-md"
-                    src={data?.logo}
-                    alt={data?.category}
-                    width={40}
-                    height={40}
-                  />
-                  <h5 className="font-semibold">{data?.category}</h5>
-            </Link>)
-        }
+        {categoryLogosArray?.map((data, index) => (
+          <Link
+            href={`/duas?cat=${data?.category}`}
+            key={index}
+            className="flex bg-white px-3 py-3 rounded-md items-center gap-2"
+          >
+            <Image
+              className="rounded-md"
+              src={data?.logo}
+              alt={data?.category}
+              width={40}
+              height={40}
+            />
+            <h5 className="font-semibold">{data?.category}</h5>
+          </Link>
+        ))}
       </div>
     </div>
   );

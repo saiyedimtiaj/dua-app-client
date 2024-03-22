@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const CategorySidebar = () => {
   const serachParams = useSearchParams();
-  const search = serachParams.get("cat");
+  const [search,setSearch] = useState('')
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [inputText, setInputText] = useState("");
   const [sebCategory, setSubCategory] = useState("");
@@ -32,6 +32,11 @@ const CategorySidebar = () => {
       setDuas(res.data);
     });
   }, []);
+
+  useEffect(()=>{
+    const searchQuery = serachParams.get("cat");
+    setSearch(searchQuery)
+  },[setSearch])
 
   const categoryLogosArray = [];
   duas?.forEach((item) => {
