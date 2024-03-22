@@ -1,0 +1,19 @@
+.rhap_progress-container{
+    display: none;
+}
+.rhap_progress-section{
+    display: flex;
+    justify-content: space-between;
+}
+.rhap_main {
+    position: static;
+}
+.rhap_volume-button{
+    display: none;
+}
+.rhap_volume-indicator{
+    display: none;
+}
+.rhap_additional-controls{
+    display: none;
+}
