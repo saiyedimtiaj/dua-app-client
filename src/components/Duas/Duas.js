@@ -25,7 +25,7 @@ const Duas = () => {
     axios.get(`/duas?category=${search}`).then((res) => {
       setDuas(res.data);
     });
-  }, [search]);
+  }, [search,axios]);
 
   const handelToast = () => {
     toast.success("Comming Soon In Sha Allah", {
@@ -65,7 +65,7 @@ const Duas = () => {
   }, [setBookMark,bookMark]);
 
   return (
-    <div className="w-full space-y-5 transition-all duration-300 ease-in-out mb-20 pb-20">
+    <div className="w-full space-y-5 transition-all duration-300 ease-in-out mb-[70px] lg:mb-5">
       {duas?.map((dua, index) => (
         <section
           id={dua?.name}
@@ -131,9 +131,9 @@ const Duas = () => {
                 <MdOutlineReport size={25} />
               </span>
             </div>
+          </div>
           <Modal id={id} setOpenModal={setOpenModal} openModal={openModal} />
           <Toaster position="bottom-center" reverseOrder={false} />
-          </div>
         </section>
       ))}
     </div>

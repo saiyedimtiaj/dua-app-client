@@ -1,16 +1,14 @@
 "use client";
 
 import { MdMenu } from "react-icons/md";
-import { IoIosReturnRight } from "react-icons/io";
 import { useEffect, useState } from "react";
 import UseAxios from "@/Hooks/UseAxios";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import Accrodian from "./Accrodian";
 
 const CategorySidebar = () => {
   const serachParams = useSearchParams();
-  const [search,setSearch] = useState('')
+  const search = serachParams.get("cat");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [inputText, setInputText] = useState("");
   const [sebCategory, setSubCategory] = useState("");
@@ -31,12 +29,7 @@ const CategorySidebar = () => {
     axios.get("/duas").then((res) => {
       setDuas(res.data);
     });
-  }, []);
-
-  useEffect(()=>{
-    const searchQuery = serachParams.get("cat");
-    setSearch(searchQuery)
-  },[setSearch])
+  }, [axios]);
 
   const categoryLogosArray = [];
   duas?.forEach((item) => {
@@ -106,119 +99,31 @@ const CategorySidebar = () => {
           ></label>
           <div className="menu w-72 min-h-screen bg-white mx-0 ">
             <div className="space-y-2 overflow-y-auto h-screen bg-white mx-0 ">
-              {filterData?.map((duas, index) => (
-                <div
-                  key={index}
-                  className="collapse static mt-2 bg-base-200 rounded-none"
-                >
-                  <input
-                    type="radio"
-                    name="my-accordion-1"
-                    defaultChecked={search === duas?.category}
-                  />
-                  <div className="collapse-title static py-1 pl-1 pr-1 ">
-                    <Link
-                      href={`/duas?cat=${duas?.category}`}
-                      className="flex gap-1 items-center"
-                    >
-                      <Image
-                        src={duas?.logo}
-                        alt={duas?.category}
-                        width={50}
-                        height={50}
-                      />
-                      <h5 className="font-semibold">{duas?.category}</h5>
-                    </Link>
-                  </div>
-                  <div className="collapse-content space-y-2">
-                    {uniqueSubCategories?.map((cat, index) => (
-                      <div
-                        onClick={() => setSubCategory(cat)}
-                        key={index}
-                        className="collapse static collapse-arrow bg-base-200"
-                      >
-                        <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title static pt-1 pb-0 px-0 font-medium text-[14px]">
-                          {cat}
-                        </div>
-                        <div className="collapse-content space-y-3">
-                          {uniqueTitle?.map((name, index) => (
-                            <a
-                              href={`#${name}`}
-                              key={index}
-                              className="flex cursor-pointer gap-1 items-center text-xs hover:text-blue-500"
-                            >
-                              <span>
-                                <IoIosReturnRight />
-                              </span>
-                              <span>{name}</span>
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            {filterData?.map((duas) => (
+            <Accrodian
+              uniqueTitle={uniqueTitle}
+              search={search}
+              uniqueSubCategories={uniqueSubCategories}
+              setSubCategory={setSubCategory}
+              duas={duas}
+              key={duas?._id}
+            />
+          ))}
             </div>
           </div>
         </div>
 
         {/* lg sidebar */}
         <div className="w-72 hidden lg:block px-2 space-y-2 overflow-y-auto h-[calc(100vh-225px)] bg-white mx-0 ">
-          {filterData?.map((duas, index) => (
-            <div
-              key={index}
-              className="collapse static mt-2 bg-base-200 rounded-none"
-            >
-              <input
-                type="radio"
-                name="my-accordion-1"
-                defaultChecked={search === duas?.category}
-              />
-              <div className="collapse-title static py-1 pl-1 pr-1 ">
-                <Link
-                  href={`/duas?cat=${duas?.category}`}
-                  className="flex gap-1 items-center"
-                >
-                  <Image
-                    src={duas?.logo}
-                    alt={duas?.category}
-                    width={50}
-                    height={50}
-                  />
-                  <h5 className="font-semibold">{duas?.category}</h5>
-                </Link>
-              </div>
-              <div className="collapse-content space-y-2">
-                {uniqueSubCategories?.map((cat, index) => (
-                  <div
-                    onClick={() => setSubCategory(cat)}
-                    key={index}
-                    className="collapse static collapse-arrow bg-base-200"
-                  >
-                    <input type="radio" name="my-accordion-2" />
-                    <div className="collapse-title static pt-1 pb-0 px-0 font-medium text-[14px]">
-                      {cat}
-                    </div>
-                    <div className="collapse-content space-y-3">
-                      {uniqueTitle?.map((name, index) => (
-                        <a
-                          href={`#${name}`}
-                          key={index}
-                          className="flex cursor-pointer gap-1 items-center text-xs hover:text-blue-500"
-                        >
-                          <span>
-                            <IoIosReturnRight />
-                          </span>
-                          <span>{name}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {filterData?.map((duas) => (
+            <Accrodian
+              uniqueTitle={uniqueTitle}
+              search={search}
+              uniqueSubCategories={uniqueSubCategories}
+              setSubCategory={setSubCategory}
+              duas={duas}
+              key={duas?._id}
+            />
           ))}
         </div>
 

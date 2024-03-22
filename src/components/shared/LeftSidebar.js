@@ -29,9 +29,6 @@ const LeftSidebar = () => {
     { name: "All Duas", link: "/alldua", icon: MdOutlineDashboard },
   ];
 
-  const handleSearch = () => {
-    searchParams.delete('cat');
-}
   return (
     <>
       <div
@@ -65,7 +62,6 @@ const LeftSidebar = () => {
           <div className="mt-4 flex flex-col gap-2 relative">
             {menus.map((menu, i) => (
               <Link
-              onClick={handleSearch}
                 href={menu?.link}
                 key={i}
                 className={`flex items-center text-sm gap-3.5 font-medium py-2 px-2 bg-[#E8F0F5] rounded-md`}
